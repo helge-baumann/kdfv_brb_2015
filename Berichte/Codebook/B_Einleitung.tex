@@ -1,0 +1,43 @@
+\section{Zum Lesen dieses Datenhandbuchs}
+
+Das vorliegende Datenhandbuch verfolgt das Ziel, eine kontrollierte Datenfernverarbeitung mit der WSI-Be\-triebs\-rä\-te\-be\-fra\-gung 2015 zu ermöglichen. Zu diesem Zweck wurde ein synthetischer Datensatz erzeugt, welcher in der Struktur des Datensatzes (Anzahl Variablen, Variablennamen, -labels, Werte und Wertelabels) dem Originaldatensatz entspricht, nicht jedoch in den tatsächlichen Werten. Die Genese dieses Datensatzes wird in diesem Handbuch beschrieben. Für die Daten\textit{erhebung} sei auf den Methodenbericht der WSI-Betriebsrätebefragung 2015 verwiesen.
+
+Das Kapitel \hyperref[kap_fragebogen]{Fragebogen} umfasst den CATI-Fragebogen. Dort finden Sie sowohl die Bedingungen aller Fragen (Filterführung, Programmierer- und Interviewerhinweise), als auch die Verlinkung auf die Variablen, die aus den jeweiligen Fragen generiert wurden (Kapitel \hyperref[kap_rohdaten]{synthetischer Datensatz}. Je nach Arbeitsweise kann sowohl vom Datensatz als auch vom Fragebogen ausgehend gearbeitet werden: Wenn Sie wissen möchten, wie eine Variable im Datensatz erhoben wurde, klicken Sie auf die verlinkte Frage im Codebuch und Sie gelangen zurück zur ursprünglichen Frage. Wenn Sie sich zunächst den Fragebogen erarbeiten und wissen möchten, zu welchen Variablen eine bestimmte Frage führt, starten Sie vom Fragebogen.
+
+Der synthetischer Datensatz ist eine modifizierte Form der Originaldaten. Er entspricht den Originaldaten so weit wie möglich, aber so wenig wie nötig, um die vollständige Anonymität der Befragten zu gewährleisten, d.h. Um diesen Spagat umzusetzen, wurden die Originaldaten in folgenden Schritten transformiert:
+
+\begin{enumerate}
+
+\item Generierung einer Fake-ID (\texttt{lfd}). 
+
+\item Die Verteilung jeder Variablen entspricht zunächst einer Zufallsziehung der in der Datenerhebung tatsächlich realisierten Werte (mit Zurücklegen), so dass die (univariate) Verteilung der Variablen weitgehend dem Original entspricht.
+
+\item Werte mit geringen Häufigkeiten wurden wiederum (zufällig) auf häufigere Werte verteilt.
+
+\item Anschließend wurden fehlende Werte der Filterstruktur des Fragebogens nachempfunden, so dass die Abhängigkeiten zwischen Fragen erhalten bleiben.
+
+\item Offene Angaben wurden gelöscht.
+
+\end{enumerate}
+
+Durch dieses Vorgehen bleibt die Anonymität der Befragten gewahrt, aber die Analysefähigkeit qua Fernverarbeitung aufgrund der ähnlichen Filter- und Verteilungsstruktur weitgehend gewahrt. Einzig die Beziehungen zwischen Variablen (Varianz-Kovarianz-Matrix) sind so nicht zu rekonstruieren. 
+
+Mit diesem erzeugten Datensatz können Sie Ihre Analyseskripte erzeugen, die Sie anschließend an das WSI übermitteln. Das WSI wendet Ihr Skript auf die Originaldaten an und übermittelt Ihnen wiederum, nach einer umfassenden Prüfung auf Datenschutz und Anonymität, den Output Ihrer Analysen. Der Workflow lässt sich grob wie folgt skizzieren:
+
+\vspace*{0.5cm}
+
+\begin{tikzpicture}[->,>=stealth',auto,node distance=6.75cm, minimum width=4cm,
+minimum height=1cm, 
+  thick,main node/.style={rectangle,draw,font=\Large\bfseries}]
+
+  \node[main node] (1) {WSI};
+  \node[main node] (2) [right of=1] {Forscher};
+  \node[main node] (3) [right of=2] {WSI};
+
+  \path[every node/.style={font=\sffamily\small}]
+    (1) edge node [above] {Spieldaten} (2)
+    (2) edge node [above] {Analyseskript} (3)
+    (3) edge[bend left] node [below] {Output} (2);
+\end{tikzpicture}
+
+

@@ -1,0 +1,20 @@
+# Dateitypen
+*.dta
+*.sav
+*.log
+*.aux
+*.txt
+*.pdf
+*.do
+*.zip
+*.out
+*.toc
+*.synctex
+
+# Ordner
+/.RProj.user/*
+/Hintergrund/*
+/Output/*
+/Problem_Branchen/*
+/Input/*
+.Rproj.user

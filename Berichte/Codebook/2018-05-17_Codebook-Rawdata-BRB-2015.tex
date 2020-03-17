@@ -1,0 +1,103 @@
+\documentclass[fontsize=11,toc=bib,headsepline=off,ngerman, notitlepage]{scrartcl}
+
+	%\usepackage[onehalfspacing]{setspace}
+	\usepackage[utf8]{inputenc}
+	\usepackage{textcmds}
+	\usepackage[ngerman]{babel}
+	\usepackage{textcomp}
+	\usepackage{xspace}
+	\usepackage[colorlinks=true,
+			linkbordercolor={1 0 0},
+            linkcolor=blue,
+            urlcolor=blue,
+            citecolor=gray,
+			bookmarkstype=toc]{hyperref}
+	\usepackage{tikz}
+	\usetikzlibrary{arrows}
+            
+    \pagenumbering{Roman}
+
+    \renewcommand{\familydefault}{\sfdefault}
+	
+	  \setlength\abovecaptionskip{10pt}
+		\setkomafont{caption}{\itshape\rmfamily}
+		\setkomafont{captionlabel}{\scshape\rmfamily}
+		
+		\usepackage[LGRgreek]{mathastext}
+		
+  \usepackage[left=1.5cm, right=1.5cm, top=3cm, bottom=2.5cm, footskip=1cm]{geometry}
+
+	\usepackage{natbib}
+	\usepackage{har2nat}
+		\bibpunct[: ]{(}{)}{;}{a}{}{,);}
+		\makeatletter
+		\renewcommand*{\NAT@nmfmt}[1]{\textsc{#1}}		% nochmal rausfinden, was dieser Bereich erledigt.
+		\makeatother
+
+    \newcommand{\midsepremove}{\aboverulesep = 0mm \belowrulesep = 0mm}
+    \newcommand{\midsepdefault}{\aboverulesep = 0.605mm \belowrulesep = 0.984mm}
+
+  \usepackage{tabularx}
+		\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}} % linksbündig mit Breitenangabe
+		\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}} % zentriert mit Breitenangabe
+		\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}} % rechtsbündig mit Breitenangabe
+		
+  \usepackage{longtable}
+		\setlength{\LTcapwidth}{\textwidth}
+		\usepackage{booktabs}	
+	\usepackage{dcolumn}
+		\newcolumntype{d}[1]{D{.}{.}{#1}}
+	%\usepackage[demo]{graphicx} 
+	\usepackage{amsmath}
+		
+	\usepackage[automark, nouppercase,headsepline,  autooneside=false]{scrlayer-scrpage}
+		%\automark{section}
+		%\pagestyle{scrheadings}
+		%\automark[chapter]{section}
+		\setheadsepline{0.5pt}
+		\setfootsepline{0.5pt}
+		%\renewcommand{\chapterpagestyle}{scrplain}
+ 		%\renewcommand*{\partpagestyle}{empty}
+    \clearscrheadfoot
+    \rohead{\headmark \hfill Seite \thepage\ von \pageref{LastPage}}
+    %\lehead{\headmark}
+    \rofoot{\url{www.betriebsraetebefragung.de}}
+
+  \usepackage{multicol}
+  \usepackage{multirow}
+  \usepackage{lastpage}
+  \usepackage{colortbl}
+
+	  \setcounter{secnumdepth}{0}
+	
+	  \newcommand\hfilll{\hspace{0pt plus 1filll}}
+	
+	  \newdimen\mylength
+	  \mylength=2.25cm
+	
+\begin{document}
+
+    \renewcommand{\refname}{References}	 % Änderung der ?berschrift im Literaturverzeichnis
+
+  \input{A_Titelseite.tex}
+	
+    \thispagestyle{plain}
+  
+	\tableofcontents
+	
+	  \newpage
+	
+	  \pagenumbering{arabic}
+	  
+	\input{B_Einleitung.tex}
+	
+	  \newpage
+	
+  \input{C_Fragebogen.tex}
+
+    \newpage
+
+  \input{D_Codebook_Rawdata.tex}
+  
+	
+\end{document}
